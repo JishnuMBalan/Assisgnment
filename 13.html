@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2></h2> Write a function to check if a given number is an Armstrong number.</h2> <br>
+
+    <script>
+
+         function power(x, y)
+        {
+            if( y == 0)
+                return 1;
+            if (y % 2 == 0)
+                return power(x, parseInt(y / 2, 10)) *
+                    power(x, parseInt(y / 2, 10));
+                        
+            return x * power(x, parseInt(y / 2, 10)) *
+                    power(x, parseInt(y / 2, 10));
+        }
+    
+        function order(x)
+        {
+            let n = 0;
+            while (x != 0)
+            {
+                n++;
+                x = parseInt(x / 10, 10);
+            }
+            return n;
+        }
+        
+        function isArmstrong(x)
+        {
+            
+            let n = order(x);
+            let temp = x, sum = 0;
+            while (temp != 0)
+            {
+                let r = temp % 10;
+                sum = sum + power(r, n);
+                temp = parseInt(temp / 10, 10);
+            }
+    
+          
+            return (sum == x);
+        }
+        
+        let x = 153;
+        if(isArmstrong(x))
+        {
+            document.write(x + "True" + "</br>");
+        }
+        else{
+            document.write(x + "False" + "</br>");
+        }
+        x = 1253;
+        if(isArmstrong(x))
+        {
+            document.write(x + "True" + "</br>");
+        }
+        else{
+            document.write(x + "False" + "</br>");
+        }
+    
+    </script>
+    
+</body>
+</html>
